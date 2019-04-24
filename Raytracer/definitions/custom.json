@@ -177,9 +177,9 @@
     }],
     "renderer" : {
       "type" : "PT",
-      "dimensions" : [100, 100],
-      "samples" : 16,
-      "depth" : 5,
+      "dimensions" : [512, 512],
+      "samples" : 4096,
+      "depth" : 6,
       "output" : "../output/custom.ppm"
     }
   }
