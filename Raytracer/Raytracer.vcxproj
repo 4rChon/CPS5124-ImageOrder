@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{2479B6D9-80A1-49B4-B899-BAF62CA01116}</ProjectGuid>
     <RootNamespace>Raytracer</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -69,18 +69,33 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Tracer;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Shape;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Scene;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Primitive;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Material;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Light;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Camera;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include;$(IncludePath)</IncludePath>
+    <SourcePath>C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\source;$(SourcePath)</SourcePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Tracer;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Shape;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Scene;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Primitive;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Material;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Light;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Camera;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include;$(IncludePath)</IncludePath>
+    <SourcePath>C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\source;$(SourcePath)</SourcePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <SourcePath>C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\source;$(SourcePath)</SourcePath>
+    <IncludePath>C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Tracer;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Shape;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Scene;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Primitive;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Material;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Light;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Camera;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Tracer;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Shape;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Scene;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Primitive;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Material;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Light;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include\Camera;C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\include;$(IncludePath)</IncludePath>
+    <SourcePath>C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\Raytracer\source;$(SourcePath)</SourcePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Program Files\gflags\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\packages\gflags\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_HAS_ITERATOR_DEBUGGING=0;_ITERATOR_DEBUG_LEVEL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Program Files\gflags\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\packages\gflags\build\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>gflags_static.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -89,12 +104,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Program Files\gflags\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\packages\gflags\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_HAS_ITERATOR_DEBUGGING=0;_ITERATOR_DEBUG_LEVEL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Program Files\gflags\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\packages\gflags\build\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>gflags_static.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -105,13 +120,13 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Program Files\gflags\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\packages\gflags\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\Program Files\gflags\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\packages\gflags\build\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>gflags_static.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -122,89 +137,89 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Program Files\gflags\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\packages\gflags\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\Program Files\gflags\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\bendb\Desktop\Desktop Files\School\Uni\M.Sc\CPS5124 - Computer Graphics\Raytracer\packages\gflags\build\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>gflags_static.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Ad_hoc_material.cpp" />
-    <ClCompile Include="Area_light.cpp" />
-    <ClCompile Include="BxDF.cpp" />
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Coordinate_frame.cpp" />
-    <ClCompile Include="Distributed_tracer.cpp" />
-    <ClCompile Include="Emissive_primitive.cpp" />
-    <ClCompile Include="Geometric_primitive.cpp" />
-    <ClCompile Include="ILight.cpp" />
-    <ClCompile Include="IMaterial.cpp" />
-    <ClCompile Include="Intersection.cpp" />
-    <ClCompile Include="IPrimitive.cpp" />
-    <ClCompile Include="IShape.cpp" />
-    <ClCompile Include="json.cpp" />
-    <ClCompile Include="Lens_camera.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Path_tracer.cpp" />
-    <ClCompile Include="Pinhole_camera.cpp" />
-    <ClCompile Include="Pixel.cpp" />
-    <ClCompile Include="Point_light.cpp" />
-    <ClCompile Include="Ray.cpp" />
-    <ClCompile Include="Sampler.cpp" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="spectrum.cpp" />
-    <ClCompile Include="Sphere.cpp" />
-    <ClCompile Include="Tracer.cpp" />
-    <ClCompile Include="util.cpp" />
-    <ClCompile Include="Whitted_tracer.cpp" />
+    <ClCompile Include="source\Camera\Camera.cpp" />
+    <ClCompile Include="source\Camera\Coordinate_frame.cpp" />
+    <ClCompile Include="source\Camera\Lens_camera.cpp" />
+    <ClCompile Include="source\Camera\Pinhole_camera.cpp" />
+    <ClCompile Include="source\Camera\Ray.cpp" />
+    <ClCompile Include="source\json.cpp" />
+    <ClCompile Include="source\Light\Area_light.cpp" />
+    <ClCompile Include="source\Light\ILight.cpp" />
+    <ClCompile Include="source\Light\Point_light.cpp" />
+    <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\Material\Ad_hoc_material.cpp" />
+    <ClCompile Include="source\Material\BxDF.cpp" />
+    <ClCompile Include="source\Material\IMaterial.cpp" />
+    <ClCompile Include="source\Material\spectrum.cpp" />
+    <ClCompile Include="source\Pixel.cpp" />
+    <ClCompile Include="source\Primitive\Emissive_primitive.cpp" />
+    <ClCompile Include="source\Primitive\Geometric_primitive.cpp" />
+    <ClCompile Include="source\Primitive\IPrimitive.cpp" />
+    <ClCompile Include="source\Sampler.cpp" />
+    <ClCompile Include="source\Scene\Scene.cpp" />
+    <ClCompile Include="source\Shape\Intersection.cpp" />
+    <ClCompile Include="source\Shape\IShape.cpp" />
+    <ClCompile Include="source\Shape\Sphere.cpp" />
+    <ClCompile Include="source\Tracer\Distributed_tracer.cpp" />
+    <ClCompile Include="source\Tracer\Path_tracer.cpp" />
+    <ClCompile Include="source\Tracer\Tracer.cpp" />
+    <ClCompile Include="source\Tracer\Whitted_tracer.cpp" />
+    <ClCompile Include="source\util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Ad_hoc_material.h" />
-    <ClInclude Include="Area_light.h" />
-    <ClInclude Include="BxDF.h" />
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="Coordinate_frame.h" />
-    <ClInclude Include="Distributed_tracer.h" />
-    <ClInclude Include="Emissive_primitive.h" />
-    <ClInclude Include="Geometric_primitive.h" />
-    <ClInclude Include="ILight.h" />
-    <ClInclude Include="IMaterial.h" />
-    <ClInclude Include="Intersection.h" />
-    <ClInclude Include="IPrimitive.h" />
-    <ClInclude Include="IShape.h" />
-    <ClInclude Include="json.h" />
-    <ClInclude Include="Lens_camera.h" />
-    <ClInclude Include="Path_tracer.h" />
-    <ClInclude Include="Pinhole_camera.h" />
-    <ClInclude Include="Pixel.h" />
-    <ClInclude Include="Point_light.h" />
-    <ClInclude Include="Ray.h" />
-    <ClInclude Include="Sampler.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="shader.h" />
-    <ClInclude Include="spectrum.h" />
-    <ClInclude Include="Sphere.h" />
-    <ClInclude Include="Tracer.h" />
-    <ClInclude Include="util.h" />
-    <ClInclude Include="Whitted_tracer.h" />
+    <ClInclude Include="include\Camera\Camera.h" />
+    <ClInclude Include="include\Camera\Coordinate_frame.h" />
+    <ClInclude Include="include\Camera\Lens_camera.h" />
+    <ClInclude Include="include\Camera\Pinhole_camera.h" />
+    <ClInclude Include="include\Camera\Ray.h" />
+    <ClInclude Include="include\json.h" />
+    <ClInclude Include="include\Light\Area_light.h" />
+    <ClInclude Include="include\Light\ILight.h" />
+    <ClInclude Include="include\Light\Point_light.h" />
+    <ClInclude Include="include\Material\Ad_hoc_material.h" />
+    <ClInclude Include="include\Material\BxDF.h" />
+    <ClInclude Include="include\Material\IMaterial.h" />
+    <ClInclude Include="include\Material\spectrum.h" />
+    <ClInclude Include="include\Pixel.h" />
+    <ClInclude Include="include\Primitive\Emissive_primitive.h" />
+    <ClInclude Include="include\Primitive\Geometric_primitive.h" />
+    <ClInclude Include="include\Primitive\IPrimitive.h" />
+    <ClInclude Include="include\Sampler.h" />
+    <ClInclude Include="include\Scene\Scene.h" />
+    <ClInclude Include="include\shader.h" />
+    <ClInclude Include="include\Shape\Intersection.h" />
+    <ClInclude Include="include\Shape\IShape.h" />
+    <ClInclude Include="include\Shape\Sphere.h" />
+    <ClInclude Include="include\Tracer\Distributed_tracer.h" />
+    <ClInclude Include="include\Tracer\Path_tracer.h" />
+    <ClInclude Include="include\Tracer\Tracer.h" />
+    <ClInclude Include="include\Tracer\Whitted_tracer.h" />
+    <ClInclude Include="include\util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\packages\glm.0.9.8.5\build\native\glm.targets" Condition="Exists('..\packages\glm.0.9.8.5\build\native\glm.targets')" />
     <Import Project="..\packages\rapidjson.temprelease.0.0.2.20\build\native\rapidjson.temprelease.targets" Condition="Exists('..\packages\rapidjson.temprelease.0.0.2.20\build\native\rapidjson.temprelease.targets')" />
+    <Import Project="..\packages\glm.0.9.9.500\build\native\glm.targets" Condition="Exists('..\packages\glm.0.9.9.500\build\native\glm.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\glm.0.9.8.5\build\native\glm.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\glm.0.9.8.5\build\native\glm.targets'))" />
     <Error Condition="!Exists('..\packages\rapidjson.temprelease.0.0.2.20\build\native\rapidjson.temprelease.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\rapidjson.temprelease.0.0.2.20\build\native\rapidjson.temprelease.targets'))" />
+    <Error Condition="!Exists('..\packages\glm.0.9.9.500\build\native\glm.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\glm.0.9.9.500\build\native\glm.targets'))" />
   </Target>
 </Project>

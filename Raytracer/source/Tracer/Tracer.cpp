@@ -4,15 +4,16 @@
 #include <algorithm>
 #include <iostream>
 #include <Windows.h>
+#include <ppl.h>
 
 #include "gflags/gflags.h"
 
 #include "util.h"
 
-DEFINE_bool(progress, false, "Whether to print progress every 1000 frames");
+DEFINE_bool(progress, false, "Print progress every 1000 pixels");
+DEFINE_bool(stratified_sampling, true, "Use a stratified sampling strategy");
 DECLARE_bool(depth_map);
 
-DEFINE_bool(stratified_sampling, true, "Whether to use a stratified sampling strategy");
 
 namespace Raytracer
 {
@@ -33,21 +34,20 @@ namespace Raytracer
   Tracer::~Tracer() {}
 
   std::vector<Pixel> Tracer::render(Scene& scene,
-                                    Camera& camera,
-                                    Sampler& sampler)
+    Camera& camera,
+    Sampler& sampler)
   {
     auto i = 0;
     auto before = GetTickCount();
-
     for (auto& pixel : framebuffer_)
     {
       auto L = glm::vec3(0); // Initial radiance
-      for (unsigned int s = 0; s < sampler.spp; ++s)
+      concurrency::parallel_for(size_t(0), sampler.spp, [&](size_t s)
       {
         auto spp_sample =
           FLAGS_stratified_sampling
-            ? sampler.next_stratified_sample()
-            : sampler.next_uniform_sample();
+          ? sampler.next_stratified_sample()
+          : sampler.next_uniform_sample();
         float xx = (float)(pixel.x + spp_sample.jitter.x) / (float)width_;
         float yy = (float)(pixel.y + spp_sample.jitter.y) / (float)height_;
 
@@ -66,17 +66,17 @@ namespace Raytracer
         {
           throw "Invalid camera type.";
         }
-      }
+      });
+
+      pixel.colour = L;
 
       if (FLAGS_progress && i++ % 1000 == 0)
       {
-        auto after = GetTickCount();
-        std::cout << i++ << "/" << height_*width_ << " - elapsed time: " << double(after - before)/1000 << " seconds\n";
-        before = GetTickCount();
+        printf("%d/%d\n", i++, height_*width_);
       }
-
-      pixel.colour = L;
     }
+
+    printf("elapsed time: %f seconds \n", double(GetTickCount() - before)/1000);
 
     return framebuffer_;
   }

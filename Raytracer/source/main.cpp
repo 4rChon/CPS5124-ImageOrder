@@ -13,7 +13,7 @@
 
 namespace fs = std::experimental::filesystem::v1;
 
-DEFINE_bool(batch, false, "Whether to render all files in the load folder");
+DEFINE_bool(batch, true, "Render all files in the load folder");
 
 static bool validate_load_path(const char* flagname, const std::string& value)
 {
@@ -26,7 +26,7 @@ static bool validate_load_path(const char* flagname, const std::string& value)
   return false;
 }
 
-DEFINE_string(load_path, "./definitions/PT/", "Folder containing scene definition file.");
+DEFINE_string(load_path, "./definitions/", "Folder containing scene definition file.");
 DEFINE_validator(load_path, &validate_load_path);
 
 static bool validate_save_path(const char* flagname, const std::string& value)
@@ -58,19 +58,19 @@ static bool validate_input_file(const char* flagname, const std::string& value)
   return stat(full_path.c_str(), &buffer) == 0;
 }
 
-DEFINE_string(input_file, "assignment_03.json", "Input filename");
+DEFINE_string(input_file, "in.json", "Input filename");
 DEFINE_validator(input_file, &validate_input_file);
 
 DEFINE_string(output_file, "out.ppm", "Output filename");
-DEFINE_bool(draw, false, "Whether to draw result after tracing is complete (NYI)");
-DEFINE_bool(depth_map, false, "Whether to output a depth map alongside the coloured render");
+DEFINE_bool(draw, false, "Draw result after tracing is complete (NYI)");
+DEFINE_bool(depth_map, false, "Output a depth map instead of the coloured render");
 
 static bool validate_tonemapper(const char* flagname, const std::string& value)
 {
   return value.compare("sigmoid") == 0 || value.compare("linear") == 0 || value.compare("none") == 0;
 }
 
-DEFINE_string(tonemapper, "sigmoid", "Tone mapper to use (sigmoid or linear");
+DEFINE_string(tonemapper, "sigmoid", "Tone mapper to use (sigmoid | linear");
 DEFINE_validator(tonemapper, &validate_tonemapper);
 
 int main(int argc, char *argv[])
@@ -122,7 +122,9 @@ int main(int argc, char *argv[])
       tracer->save_depth(FLAGS_save_path, output_files[i]);
     }
     if (FLAGS_draw)
+    {
       tracer->draw();
+    }
 
     delete scene;
     delete camera;

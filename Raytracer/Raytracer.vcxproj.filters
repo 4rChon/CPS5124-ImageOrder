@@ -57,88 +57,88 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="source\json.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="json.cpp">
+    <ClCompile Include="source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Tracer.cpp">
-      <Filter>Source Files\Tracer</Filter>
-    </ClCompile>
-    <ClCompile Include="Whitted_tracer.cpp">
-      <Filter>Source Files\Tracer</Filter>
-    </ClCompile>
-    <ClCompile Include="Sampler.cpp">
+    <ClCompile Include="source\Pixel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="util.cpp">
+    <ClCompile Include="source\Sampler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Pixel.cpp">
+    <ClCompile Include="source\util.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Pinhole_camera.cpp">
+    <ClCompile Include="source\Camera\Camera.cpp">
       <Filter>Source Files\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
+    <ClCompile Include="source\Camera\Coordinate_frame.cpp">
       <Filter>Source Files\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="Ray.cpp">
+    <ClCompile Include="source\Camera\Lens_camera.cpp">
       <Filter>Source Files\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="Coordinate_frame.cpp">
+    <ClCompile Include="source\Camera\Pinhole_camera.cpp">
       <Filter>Source Files\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="IShape.cpp">
-      <Filter>Source Files\Shape</Filter>
+    <ClCompile Include="source\Camera\Ray.cpp">
+      <Filter>Source Files\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="Intersection.cpp">
-      <Filter>Source Files\Shape</Filter>
-    </ClCompile>
-    <ClCompile Include="Sphere.cpp">
-      <Filter>Source Files\Shape</Filter>
-    </ClCompile>
-    <ClCompile Include="BxDF.cpp">
-      <Filter>Source Files\Material</Filter>
-    </ClCompile>
-    <ClCompile Include="Ad_hoc_material.cpp">
-      <Filter>Source Files\Material</Filter>
-    </ClCompile>
-    <ClCompile Include="spectrum.cpp">
-      <Filter>Source Files\Material</Filter>
-    </ClCompile>
-    <ClCompile Include="ILight.cpp">
+    <ClCompile Include="source\Light\Area_light.cpp">
       <Filter>Source Files\Light</Filter>
     </ClCompile>
-    <ClCompile Include="IMaterial.cpp">
+    <ClCompile Include="source\Light\ILight.cpp">
+      <Filter>Source Files\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Light\Point_light.cpp">
+      <Filter>Source Files\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Material\Ad_hoc_material.cpp">
       <Filter>Source Files\Material</Filter>
     </ClCompile>
-    <ClCompile Include="IPrimitive.cpp">
+    <ClCompile Include="source\Material\BxDF.cpp">
+      <Filter>Source Files\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Material\IMaterial.cpp">
+      <Filter>Source Files\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Material\spectrum.cpp">
+      <Filter>Source Files\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Primitive\Emissive_primitive.cpp">
       <Filter>Source Files\Primitive</Filter>
     </ClCompile>
-    <ClCompile Include="Geometric_primitive.cpp">
+    <ClCompile Include="source\Primitive\Geometric_primitive.cpp">
       <Filter>Source Files\Primitive</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp">
+    <ClCompile Include="source\Primitive\IPrimitive.cpp">
+      <Filter>Source Files\Primitive</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Scene\Scene.cpp">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Point_light.cpp">
-      <Filter>Source Files\Light</Filter>
+    <ClCompile Include="source\Shape\Intersection.cpp">
+      <Filter>Source Files\Shape</Filter>
     </ClCompile>
-    <ClCompile Include="Lens_camera.cpp">
-      <Filter>Source Files\Camera</Filter>
+    <ClCompile Include="source\Shape\IShape.cpp">
+      <Filter>Source Files\Shape</Filter>
     </ClCompile>
-    <ClCompile Include="Distributed_tracer.cpp">
+    <ClCompile Include="source\Shape\Sphere.cpp">
+      <Filter>Source Files\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Tracer\Distributed_tracer.cpp">
       <Filter>Source Files\Tracer</Filter>
     </ClCompile>
-    <ClCompile Include="Emissive_primitive.cpp">
-      <Filter>Source Files\Primitive</Filter>
+    <ClCompile Include="source\Tracer\Path_tracer.cpp">
+      <Filter>Source Files\Tracer</Filter>
     </ClCompile>
-    <ClCompile Include="Area_light.cpp">
-      <Filter>Source Files\Light</Filter>
+    <ClCompile Include="source\Tracer\Tracer.cpp">
+      <Filter>Source Files\Tracer</Filter>
     </ClCompile>
-    <ClCompile Include="Path_tracer.cpp">
+    <ClCompile Include="source\Tracer\Whitted_tracer.cpp">
       <Filter>Source Files\Tracer</Filter>
     </ClCompile>
   </ItemGroup>
@@ -146,88 +146,88 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="json.h">
+    <ClInclude Include="include\json.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Tracer.h">
-      <Filter>Header Files\Tracer</Filter>
-    </ClInclude>
-    <ClInclude Include="Whitted_tracer.h">
-      <Filter>Header Files\Tracer</Filter>
-    </ClInclude>
-    <ClInclude Include="Sampler.h">
+    <ClInclude Include="include\Pixel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="util.h">
+    <ClInclude Include="include\Sampler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Pixel.h">
+    <ClInclude Include="include\shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
+    <ClInclude Include="include\util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Camera\Camera.h">
       <Filter>Header Files\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="Pinhole_camera.h">
+    <ClInclude Include="include\Camera\Coordinate_frame.h">
       <Filter>Header Files\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="Ray.h">
+    <ClInclude Include="include\Camera\Lens_camera.h">
       <Filter>Header Files\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="Coordinate_frame.h">
+    <ClInclude Include="include\Camera\Pinhole_camera.h">
       <Filter>Header Files\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="IShape.h">
-      <Filter>Header Files\Shape</Filter>
+    <ClInclude Include="include\Camera\Ray.h">
+      <Filter>Header Files\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="Intersection.h">
-      <Filter>Header Files\Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="Sphere.h">
-      <Filter>Header Files\Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="BxDF.h">
-      <Filter>Header Files\Material</Filter>
-    </ClInclude>
-    <ClInclude Include="Ad_hoc_material.h">
-      <Filter>Header Files\Material</Filter>
-    </ClInclude>
-    <ClInclude Include="shader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="spectrum.h">
-      <Filter>Header Files\Material</Filter>
-    </ClInclude>
-    <ClInclude Include="ILight.h">
+    <ClInclude Include="include\Light\Area_light.h">
       <Filter>Header Files\Light</Filter>
     </ClInclude>
-    <ClInclude Include="IMaterial.h">
+    <ClInclude Include="include\Light\ILight.h">
+      <Filter>Header Files\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Light\Point_light.h">
+      <Filter>Header Files\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Material\Ad_hoc_material.h">
       <Filter>Header Files\Material</Filter>
     </ClInclude>
-    <ClInclude Include="IPrimitive.h">
+    <ClInclude Include="include\Material\BxDF.h">
+      <Filter>Header Files\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Material\IMaterial.h">
+      <Filter>Header Files\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Material\spectrum.h">
+      <Filter>Header Files\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Primitive\Emissive_primitive.h">
       <Filter>Header Files\Primitive</Filter>
     </ClInclude>
-    <ClInclude Include="Geometric_primitive.h">
+    <ClInclude Include="include\Primitive\Geometric_primitive.h">
       <Filter>Header Files\Primitive</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
+    <ClInclude Include="include\Primitive\IPrimitive.h">
+      <Filter>Header Files\Primitive</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Scene\Scene.h">
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Point_light.h">
-      <Filter>Header Files\Light</Filter>
+    <ClInclude Include="include\Shape\Intersection.h">
+      <Filter>Header Files\Shape</Filter>
     </ClInclude>
-    <ClInclude Include="Lens_camera.h">
-      <Filter>Header Files\Camera</Filter>
+    <ClInclude Include="include\Shape\IShape.h">
+      <Filter>Header Files\Shape</Filter>
     </ClInclude>
-    <ClInclude Include="Distributed_tracer.h">
+    <ClInclude Include="include\Shape\Sphere.h">
+      <Filter>Header Files\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Tracer\Distributed_tracer.h">
       <Filter>Header Files\Tracer</Filter>
     </ClInclude>
-    <ClInclude Include="Emissive_primitive.h">
-      <Filter>Header Files\Primitive</Filter>
+    <ClInclude Include="include\Tracer\Path_tracer.h">
+      <Filter>Header Files\Tracer</Filter>
     </ClInclude>
-    <ClInclude Include="Area_light.h">
-      <Filter>Header Files\Light</Filter>
+    <ClInclude Include="include\Tracer\Tracer.h">
+      <Filter>Header Files\Tracer</Filter>
     </ClInclude>
-    <ClInclude Include="Path_tracer.h">
+    <ClInclude Include="include\Tracer\Whitted_tracer.h">
       <Filter>Header Files\Tracer</Filter>
     </ClInclude>
   </ItemGroup>

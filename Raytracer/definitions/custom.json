@@ -1,0 +1,186 @@
+{
+  "cameras" : [{
+    "id" : "lens-based",
+    "type" : "lens-based",
+    "focal distance" : 15.5,
+    "alpha" : 0.4,
+    "fov" : 45,
+    "aspect" : 1.0,
+    "distance" : 5.0,
+    "position" : [4, -2, -15],
+    "target" : [0, 0, 0]
+  }],
+  
+  "materials" : [{
+    "id" : "red diffuse",
+    "type" : "diffuse",
+    "rho" : [0.5, 0.25, 0.25]
+  }, {
+    "id" : "green diffuse",
+    "type" : "diffuse",
+    "rho" : [0.25, 0.5, 0.25]
+  }, {
+    "id" : "grey diffuse",
+    "type" : "diffuse",
+    "rho" : [0.8, 0.8, 0.8]
+  }, {
+    "id" : "white diffuse",
+    "type" : "diffuse",
+    "rho" : [1.0, 1.0, 1.0]
+  }, {
+    "id" : "glossy",
+    "type" : "glossy reflection",
+    "rho" : [0.9, 0.9, 0.9],
+    "roughness" : 0.1
+  }, {
+    "id" : "very glossy",
+    "type" : "glossy reflection",
+    "rho" : [0.9, 0.9, 0.9],
+    "roughness" : 0.7
+  }, {
+    "id" : "fresnel dielectric",
+    "type" : "fresnel dielectric",
+    "rhoR" : [0.9, 0.9, 0.9],
+    "rhoT" : [0.9, 0.9, 0.9],
+    "eta" : 1.5
+  }],
+  
+  "shapes" : [{
+    "id" : "left wall",
+    "type" : "sphere",
+    "centre" : [-505, 0, 0],
+    "radius" : 500
+  }, {
+    "id" : "right wall",
+    "type" : "sphere",
+    "centre" : [505, 0, 0],
+    "radius" : 500
+  }, {
+    "id" : "far wall",
+    "type" : "sphere",
+    "centre" : [0, 0, 505],
+    "radius" : 500
+  }, {
+    "id" : "ceiling",
+    "type" : "sphere",
+    "centre" : [0, 505, 0],
+    "radius" : 500
+  }, {
+    "id" : "floor",
+    "type" : "sphere",
+    "centre" : [0, -505, 0],
+    "radius" : 500
+  }, {
+    "id" : "sphere 01",
+    "type" : "sphere",
+    "centre" : [-3, 0, -3],
+    "radius" : 1
+  }, {
+    "id" : "sphere 02",
+    "type" : "sphere",
+    "centre" : [3, 0, 3],
+    "radius" : 1
+  }, {
+    "id" : "sphere 03",
+    "type" : "sphere",
+    "centre" : [0, 0, 0],
+    "radius" : 1.5
+  }, {
+    "id" : "sphere 04",
+    "type" : "sphere",
+    "centre" : [3, 3, 0.35],
+    "radius" : 1
+  }, {
+    "id" : "yellow light",
+    "type" : "sphere",
+    "centre" : [-3, 3, 0.35],
+    "radius" : 0.50
+  }, {
+    "id" : "pink light",
+    "type" : "sphere",
+    "centre" : [3, -3, -0.35],
+    "radius" : 0.55
+  }],
+   
+  "lights" : [{
+    "id" : "yellow",
+    "type" : "area",
+    "shape" : "yellow light",
+    "power" : [40, 30, 10]
+  }, {
+    "id" : "pink",
+    "type" : "area",
+    "shape" : "pink light",
+    "power" : [40, 10, 30]
+  }],
+  
+  "scene" : {
+    "camera" : "lens-based",
+    "lights" : ["yellow", "pink"],
+    "primitives" : [{
+      "id" : "yellow",
+      "type" : "emissive",
+      "shape" : "yellow light",
+      "light" : "yellow",
+      "material" : "white diffuse"
+    }, {
+      "id" : "pink",
+      "type" : "emissive",
+      "shape" : "pink light",
+      "light" : "pink",
+      "material" : "white diffuse"
+    }, {
+      "id" : "left wall",
+      "type" : "geometric",
+      "shape" : "left wall",
+      "material" : "red diffuse"
+    }, {
+      "id" : "right wall",
+      "type" : "geometric",
+      "shape" : "right wall",
+      "material" : "green diffuse"
+    }, {
+      "id" : "far wall",
+      "type" : "geometric",
+      "shape" : "far wall",
+      "material" : "white diffuse"
+    }, {
+      "id" : "ceiling",
+      "type" : "geometric",
+      "shape" : "ceiling",
+      "material" : "white diffuse"
+    }, {
+      "id" : "floor",
+      "type" : "geometric",
+      "shape" : "floor",
+      "material" : "grey diffuse"
+    }, {
+      "id" : "sphere 01",
+      "type" : "geometric",
+      "shape" : "sphere 01",
+      "material" : "fresnel dielectric"
+    }, {
+      "id" : "sphere 02",
+      "type" : "geometric",
+      "shape" : "sphere 02",
+      "material" : "fresnel dielectric"
+    }, {
+      "id" : "sphere 03",
+      "type" : "geometric",
+      "shape" : "sphere 03",
+      "material" : "glossy"
+    }, {
+      "id" : "sphere 04",
+      "type" : "geometric",
+      "shape" : "sphere 04",
+      "material" : "grey diffuse"
+    }],
+    "renderer" : {
+      "type" : "PT",
+      "dimensions" : [100, 100],
+      "samples" : 16,
+      "depth" : 5,
+      "output" : "../output/custom.ppm"
+    }
+  }
+}
