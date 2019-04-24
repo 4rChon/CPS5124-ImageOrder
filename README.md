@@ -1,5 +1,7 @@
 # CPS5124-ImageOrder
-An image order implementation for CPS5124 based on the definition included in this repo.
+An image order implementation for CPS5124.
+
+The image below is rendered based on the definition included in this repo.
 
 ![image](https://i.imgur.com/goO1aBQ.png "4096 samples per pixel, 512x512")
 
