@@ -95,7 +95,7 @@ int main(int argc, char *argv[])
     output_files.push_back(FLAGS_output_file);
   }
 
-  std::size_t i = 0;
+  unsigned int i = 0;
   for (auto& f : input_files)
   {
     rapidjson::Document document = Raytracer::Json::parse_json_document(f);
