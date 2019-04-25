@@ -26,7 +26,7 @@ namespace Raytracer
     glm::vec3 L(0.f), throughput(1.f), brdf, surface_wi, surface_wo, wi, wo;
     bool specular_hit = false;
 
-    for (int bounces = 0; bounces < depth; ++bounces)
+    for (unsigned int bounces = 0; bounces < depth; ++bounces)
     {
       // Get next closest intersection for ray r
       if (scene.find_intersection(ray, i))
@@ -63,13 +63,13 @@ namespace Raytracer
         // convert wo -> surface_wo
         surface_wo = Util::world_to_surface(i.shading_ONB, wo);
 
-        auto fresnel = 1.f;
-        auto eta = material->get_eta();
+        float fresnel = 1.f;
+        float eta = material->get_eta();
         glm::vec3 normal(0, 0, 1);
         glm::vec3 transmit_normal(0, 0, 1);
         if (eta > 0.f)
         {
-          auto normal_dot_incident = glm::dot(i.shading_ONB.W, ray.D);
+          float normal_dot_incident = glm::dot(i.shading_ONB.W, ray.D);
           if (normal_dot_incident < 0.f)
           {
             fresnel = Util::fresnel_schlick(normal_dot_incident, eta, 1.f);
@@ -82,7 +82,7 @@ namespace Raytracer
           }
         }
 
-        auto xi = sampler.next_uniform_real(2);
+        std::vector<float> xi = sampler.next_uniform_real(2);
         if (material->has_type(BxDF::Diffuse))
         {
           brdf = material->sample_diffuse(xi,
@@ -125,7 +125,7 @@ namespace Raytracer
         throughput *= (brdf * abs(glm::dot(wi, i.shading_ONB.W))) / pdf;
 
         // Russian roulette to terminate path
-        auto max_component = Spectrum::max_component(throughput);
+        float max_component = Spectrum::max_component(throughput);
 
         // Attempt RR conditionally
         if ((max_component < 0.3f && bounces > 3) || max_component == 0.f)

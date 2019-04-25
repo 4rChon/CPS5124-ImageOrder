@@ -54,7 +54,7 @@ static bool validate_input_file(const char* flagname, const std::string& value)
   }
 
   struct stat buffer;
-  auto full_path = FLAGS_load_path + value;
+  std::string full_path = FLAGS_load_path + value;
   return stat(full_path.c_str(), &buffer) == 0;
 }
 
@@ -95,10 +95,10 @@ int main(int argc, char *argv[])
     output_files.push_back(FLAGS_output_file);
   }
 
-  auto i = 0;
+  std::size_t i = 0;
   for (auto& f : input_files)
   {
-    auto document = Raytracer::Json::parse_json_document(f);
+    rapidjson::Document document = Raytracer::Json::parse_json_document(f);
     Raytracer::Scene* scene = Raytracer::Json::get_scene(document);
     Raytracer::Camera* camera = Raytracer::Json::get_camera(document);
     Raytracer::Tracer* tracer = Raytracer::Json::get_renderer(document);

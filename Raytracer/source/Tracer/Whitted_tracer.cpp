@@ -35,9 +35,9 @@ namespace Raytracer
         material = (Ad_hoc_material*)i.material;
         if (material->has_type(BxDF::Specular))
         {
-          auto eta = material->get_eta();
-          auto fresnel = 1.f;
-          auto normal_dot_incident = glm::dot(i.shading_ONB.W, ray.D);
+          float eta = material->get_eta();
+          float fresnel = 1.f;
+          float normal_dot_incident = glm::dot(i.shading_ONB.W, ray.D);
           if (eta > 0.f)
           {
             if (normal_dot_incident < 0.f)

@@ -82,15 +82,15 @@ namespace Raytracer
       {
         auto camera = cameras[i].GetObject();
 
-        auto id = camera["id"].GetString();
+        const char* id = camera["id"].GetString();
         std::string type = std::string(camera["type"].GetString());
-        const auto fov = camera["fov"].GetFloat();
-        const auto aspect = camera["aspect"].GetFloat();
-        const auto distance = camera["distance"].GetFloat();
+        float fov = camera["fov"].GetFloat();
+        float aspect = camera["aspect"].GetFloat();
+        float distance = camera["distance"].GetFloat();
         auto p = camera["position"].GetArray();
-        const auto position = glm::vec3(p[0].GetFloat(), p[1].GetFloat(), p[2].GetFloat());
+        glm::vec3 position = glm::vec3(p[0].GetFloat(), p[1].GetFloat(), p[2].GetFloat());
         auto t = camera["target"].GetArray();
-        const auto target = glm::vec3(t[0].GetFloat(), t[1].GetFloat(), t[2].GetFloat());
+        glm::vec3 target = glm::vec3(t[0].GetFloat(), t[1].GetFloat(), t[2].GetFloat());
 
         if (type.compare("pinhole") == 0)
         {
@@ -99,8 +99,8 @@ namespace Raytracer
         }
         else if (type.compare("lens-based") == 0)
         {
-          auto fp = camera["focal distance"].GetFloat();
-          auto alpha = camera["alpha"].GetFloat();
+          float fp = camera["focal distance"].GetFloat();
+          float alpha = camera["alpha"].GetFloat();
           Camera* camera = new Lens_camera(fov, aspect, distance, position, target, fp, alpha);
           scene_cameras.emplace(id, camera);
         }
@@ -118,16 +118,16 @@ namespace Raytracer
       {
         auto json_material = materials[i].GetObject();
 
-        auto id = json_material["id"].GetString();
+        const char* id = json_material["id"].GetString();
         std::string types = std::string(json_material["type"].GetString());
 
         std::vector<std::string> type_list;
         Util::split(types, " ", type_list);
 
         int material_type = 0;
-        auto rho_D = glm::vec3(0);
-        auto rho_R = glm::vec3(0);
-        auto rho_T = glm::vec3(0);
+        glm::vec3 rho_D = glm::vec3(0);
+        glm::vec3 rho_R = glm::vec3(0);
+        glm::vec3 rho_T = glm::vec3(0);
         float beta = 0.f;
         float eta = 0.f;
 
@@ -182,15 +182,15 @@ namespace Raytracer
       auto shapes = get_element_array(document, "shapes");
 
       std::unordered_map<std::string, IShape*> scene_shapes;
-      for (auto i = 0; i < shapes.Size(); i++)
+      for (unsigned int i = 0; i < shapes.Size(); i++)
       {
         auto shape = shapes[i].GetObject();
 
-        auto id = shape["id"].GetString();
+        const char* id = shape["id"].GetString();
         std::string type = std::string(shape["type"].GetString());
         auto c = shape["centre"].GetArray();
-        auto centre = glm::vec3(c[0].GetFloat(), c[1].GetFloat(), c[2].GetFloat());
-        auto radius = shape["radius"].GetFloat();
+        glm::vec3 centre = glm::vec3(c[0].GetFloat(), c[1].GetFloat(), c[2].GetFloat());
+        float radius = shape["radius"].GetFloat();
 
         if (type.compare("sphere") == 0)
         {
@@ -207,19 +207,19 @@ namespace Raytracer
       auto lights = get_element_array(document, "lights");
 
       std::unordered_map<std::string, ILight*> scene_lights;
-      for (auto i = 0; i < lights.Size(); i++)
+      for (unsigned int i = 0; i < lights.Size(); i++)
       {
         auto light = lights[i].GetObject();
 
-        auto id = light["id"].GetString();
+        const char* id = light["id"].GetString();
         std::string type = std::string(light["type"].GetString());
         auto Le = light["power"].GetArray();
-        auto power = glm::vec3(Le[0].GetFloat(), Le[1].GetFloat(), Le[2].GetFloat());
+        glm::vec3 power = glm::vec3(Le[0].GetFloat(), Le[1].GetFloat(), Le[2].GetFloat());
 
         if (type.compare("point") == 0)
         {
           auto p = light["position"].GetArray();
-          auto position = glm::vec3(p[0].GetFloat(), p[1].GetFloat(), p[2].GetFloat());
+          glm::vec3 position = glm::vec3(p[0].GetFloat(), p[1].GetFloat(), p[2].GetFloat());
 
           Point_light* light_entity = new Point_light(position, power);
           scene_lights.emplace(id, light_entity);
@@ -227,7 +227,7 @@ namespace Raytracer
         else if (type.compare("area") == 0)
         {
           auto shapes = init_shapes(document);
-          auto shape = light["shape"].GetString();
+          const char* shape = light["shape"].GetString();
           assert_exists(shapes, shape, "shape");
 
           Area_light* light_entity = new Area_light(*shapes[shape], power);
@@ -258,15 +258,15 @@ namespace Raytracer
       auto primitive_list = json_scene["primitives"].GetArray();
 
       Scene* scene = new Scene();
-      for (auto i = 0; i < primitive_list.Size(); i++)
+      for (unsigned int i = 0; i < primitive_list.Size(); i++)
       {
-        auto id = primitive_list[i]["id"].GetString();
+        const char* id = primitive_list[i]["id"].GetString();
         std::string type = primitive_list[i]["type"].GetString();
         
-        auto shape = primitive_list[i]["shape"].GetString();
+        const char* shape = primitive_list[i]["shape"].GetString();
         assert_exists(shapes, shape, "shape");
         
-        auto material = primitive_list[i]["material"].GetString();
+        const char* material = primitive_list[i]["material"].GetString();
         assert_exists(materials, material, "material");
         if (type.compare("geometric") == 0)
         {
@@ -275,16 +275,16 @@ namespace Raytracer
         }
         else if (type.compare("emissive") == 0)
         {
-          auto light = primitive_list[i]["light"].GetString();
+          const char* light = primitive_list[i]["light"].GetString();
           assert_exists(lights, light, "light");
           Emissive_primitive* p = new Emissive_primitive(*shapes[shape], *materials[material], *lights[light]);
           scene->add_primitive(*p);
         }
       }
 
-      for (auto i = 0; i < light_ids.Size(); i++)
+      for (unsigned int i = 0; i < light_ids.Size(); i++)
       {
-        auto id = light_ids[i].GetString();
+        const char* id = light_ids[i].GetString();
         assert_exists(lights, id, "light");
         scene->add_light_source(*lights[id]);
       }
@@ -300,7 +300,7 @@ namespace Raytracer
 
       assert(json_scene.HasMember("renderer"));
       auto renderer = json_scene["renderer"].GetObject();
-      auto samples = renderer["samples"].GetInt();
+      int samples = renderer["samples"].GetInt();
       Sampler* sampler = new Sampler(samples);
 
       return sampler;
@@ -314,7 +314,7 @@ namespace Raytracer
       // Init camera
       auto cameras = init_cameras(document);
       assert(json_scene.HasMember("camera"));
-      auto camera_id = json_scene["camera"].GetString();
+      const char* camera_id = json_scene["camera"].GetString();
       assert_exists(cameras, camera_id, "camera");
       return cameras[camera_id];
     }
@@ -329,10 +329,10 @@ namespace Raytracer
       std::string renderer_type = std::string(renderer["type"].GetString());
       auto json_dims = renderer["dimensions"].GetArray();
       unsigned int dimensions[2] = { (unsigned int)json_dims[0].GetInt(), (unsigned int)json_dims[1].GetInt() };
-      auto depth = renderer["depth"].GetInt();
+      int depth = renderer["depth"].GetInt();
       if (depth > 20)
         depth = 20;
-      auto output = renderer["output"].GetString();
+      const char* output = renderer["output"].GetString();
 
       if (renderer_type.compare("WRT") == 0)
       {

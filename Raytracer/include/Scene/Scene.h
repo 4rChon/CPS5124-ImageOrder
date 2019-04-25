@@ -42,7 +42,7 @@ namespace Raytracer
     }
 
     template<typename Func>
-    glm::vec3 compute_direct(Func&& shader, Sampler& sampler, Intersection& intersection, const float N)
+    glm::vec3 compute_direct(Func&& shader, Sampler& sampler, Intersection& intersection, const unsigned int N)
     {
       glm::vec3 L = glm::vec3(0.f);
       for (auto& lightsource : lightsource_list_)
@@ -55,9 +55,9 @@ namespace Raytracer
         else
         {
           /* otherwise sample N times over surface of area light*/
-          for (auto i = 0; i < N; ++i)
+          for (unsigned int i = 0; i < N; ++i)
           {
-            L += (shader(this, sampler, lightsource, intersection)) / N;
+            L += (shader(this, sampler, lightsource, intersection)) / (float)N;
           }
         }
       }
@@ -68,7 +68,7 @@ namespace Raytracer
     template<typename Func>
     glm::vec3 compute_direct_stochastic(Func&& shader, Sampler& sampler, Intersection& intersection)
     {
-      auto index = sampler.next_uniform_int(1)[0] % lightsource_list_.size();
+      unsigned int index = sampler.next_uniform_int(1)[0] % lightsource_list_.size();
       return shader(this, sampler, lightsource_list_[index], intersection);
     }
   };

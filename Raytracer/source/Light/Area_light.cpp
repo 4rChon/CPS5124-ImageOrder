@@ -23,7 +23,7 @@ namespace Raytracer
                                  Light_sample& light_sample)
   {
     glm::vec3 surface_normal = shape_->surface_normal(P);
-    auto surface_point = ((Sphere*)shape_)->sample_cosine_weighted_facing_surface(xi[0], xi[1], surface_normal);
+    glm::vec3 surface_point = ((Sphere*)shape_)->sample_cosine_weighted_facing_surface(xi[0], xi[1], surface_normal);
 
     glm::vec3 light_surface_to_point = surface_point - P;
     light_sample.direction = -glm::normalize(light_surface_to_point);

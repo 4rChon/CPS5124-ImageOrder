@@ -17,7 +17,7 @@ namespace Raytracer
       char* buffer = (char*)malloc(sizeof(char)*l_size);
       s.copy(buffer, l_size, 0);
       buffer[l_size] = '\0';
-      auto split_tokens = strtok(buffer, delim);
+      char* split_tokens = strtok(buffer, delim);
       while (split_tokens != NULL)
       {
         v.push_back(split_tokens);
@@ -42,33 +42,33 @@ namespace Raytracer
 
     glm::vec3 sample_hemisphere(const float x0, const float x1)
     {
-      auto z = 1 - x0;
-      auto r = sqrt(1 - z*z);
-      auto phi = 2 * M_PI * x1;
-      auto x = r * cos(phi);
-      auto y = r * sin(phi);
+      double z = 1 - x0;
+      double r = sqrt(1 - z*z);
+      double phi = 2 * M_PI * x1;
+      double x = r * cos(phi);
+      double y = r * sin(phi);
 
       return glm::vec3(x, y, z);
     }
 
     glm::vec3 sample_cosine_weighted_hemisphere(const float x0, const float x1)
     {
-      auto r = sqrt(x0);
-      auto phi = 2 * M_PI * x1;
-      auto x = r * cos(phi);
-      auto y = r * sin(phi);
-      auto z = sqrt(std::max(0.f, 1 - x0));
+      double r = sqrt(x0);
+      double phi = 2 * M_PI * x1;
+      double x = r * cos(phi);
+      double y = r * sin(phi);
+      double z = sqrt(std::max(0.f, 1 - x0));
 
       return glm::vec3(x, y, z);
     }
 
     glm::vec3 sample_sphere(const float x0, const float x1)
     {
-      auto z = 1 - (2 * x0);
-      auto r = sqrt(1 - z*z);
-      auto phi = 2 * M_PI * x1;
-      auto x = r * cos(phi);
-      auto y = r * sin(phi);
+      double z = 1 - (2 * x0);
+      double r = sqrt(1 - z*z);
+      double phi = 2 * M_PI * x1;
+      double x = r * cos(phi);
+      double y = r * sin(phi);
 
       return glm::vec3(x, y, z);
     }
@@ -77,8 +77,8 @@ namespace Raytracer
                           const float eta_0,
                           const float eta_1)
     {
-      auto clamped_cos_theta = glm::abs(cos_theta);
-      auto R_0 = powf((eta_0 - eta_1) / (eta_0 + eta_1), 2);
+      float clamped_cos_theta = glm::abs(cos_theta);
+      float R_0 = powf((eta_0 - eta_1) / (eta_0 + eta_1), 2);
       return R_0 + ((1 - R_0) * powf((1 - clamped_cos_theta), 5));
     }
 
@@ -116,10 +116,10 @@ namespace Raytracer
 
     glm::vec3 max_colour(std::vector<Pixel>& pixelbuffer)
     {
-      auto max_c = glm::vec3(0);
+      glm::vec3 max_c = glm::vec3(0);
       for (auto& pixel : pixelbuffer)
       {
-        auto c = pixel.colour;
+        glm::vec3 c = pixel.colour;
         if (c.r > max_c.r)
         {
           max_c.r = c.r;
@@ -141,7 +141,7 @@ namespace Raytracer
 
     float max_depth(std::vector<Pixel>& pixelbuffer)
     {
-      auto max_d = 0.f;
+      float max_d = 0.f;
       for (auto& pixel : pixelbuffer)
       {
         if (pixel.depth > max_d)

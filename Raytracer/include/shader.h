@@ -62,7 +62,7 @@ namespace Raytracer
                                              Intersection& i)
     {
       Light_sample light_sample;
-      auto L_e = light->is_delta()
+      glm::vec3 L_e = light->is_delta()
         ? light->sample_L(i.P, light_sample)
         : light->sample_L(sampler.next_uniform_real(2), i.P, light_sample);
       

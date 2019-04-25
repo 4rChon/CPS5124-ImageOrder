@@ -37,14 +37,14 @@ namespace Raytracer
     Camera& camera,
     Sampler& sampler)
   {
-    auto i = 0;
+    unsigned int i = 0;
     auto before = GetTickCount();
     for (auto& pixel : framebuffer_)
     {
-      auto L = glm::vec3(0); // Initial radiance
+      glm::vec3 L = glm::vec3(0); // Initial radiance
       concurrency::parallel_for(size_t(0), sampler.spp, [&](size_t s)
       {
-        auto spp_sample =
+        Raytracer::Sample spp_sample =
           FLAGS_stratified_sampling
           ? sampler.next_stratified_sample()
           : sampler.next_uniform_sample();
@@ -54,13 +54,13 @@ namespace Raytracer
         if (camera.get_type() == Camera::Pinhole)
         {
           Ray ray = camera.get_ray(xx, yy);
-          L += trace(scene, ray, sampler, depth_) * spp_sample.weight;
+          L += trace(scene, ray, sampler, depth_) * sampler.get_weight();
         }
         else if (camera.get_type() == Camera::Lens)
         {
-          auto dof_sample = sampler.next_uniform_sample();
+          Raytracer::Sample dof_sample = sampler.next_uniform_sample();
           Ray ray = camera.get_ray(xx, yy, dof_sample.jitter);
-          L += trace(scene, ray, sampler, depth_) * spp_sample.weight;
+          L += trace(scene, ray, sampler, depth_) * sampler.get_weight();
         }
         else
         {
@@ -113,7 +113,7 @@ namespace Raytracer
 
   void Tracer::tone_map_linear()
   {
-    auto max_colour = Util::max_colour(framebuffer_);
+    glm::vec3 max_colour = Util::max_colour(framebuffer_);
     for (auto& pixel : framebuffer_)
     {
       pixel.colour = 255.f * (pixel.colour / max_colour);
@@ -138,13 +138,13 @@ namespace Raytracer
 
   void Tracer::save(std::string path, std::string filename) const
   {
-    auto output = path + "/" + filename;
+    std::string output = path + "/" + filename;
     FILE* fp = fopen(output.c_str(), "wb+");
     (void)fprintf(fp, "P6\n%d %d\n255\n", width_, height_);
 
     for (auto& pixel : framebuffer_)
     {
-      auto colour = pixel.colour;
+      glm::vec3 colour = pixel.colour;
       static unsigned char ppm_colour[3];
       ppm_colour[0] = (char)colour.r;
       ppm_colour[1] = (char)colour.g;
@@ -157,7 +157,7 @@ namespace Raytracer
 
   void Tracer::save_depth(std::string path, std::string filename) const
   {
-    auto output = path + "/depth_" + filename;
+    std::string output = path + "/depth_" + filename;
 
     FILE* fp = fopen(output.c_str(), "wb+");
     (void)fprintf(fp, "P6\n%d %d\n255\n", width_, height_);

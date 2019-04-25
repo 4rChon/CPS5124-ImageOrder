@@ -44,9 +44,9 @@ namespace Raytracer
         material = (Ad_hoc_material*)i.material;
         wo = -ray.D;
 
-        auto fresnel = 1.f;
-        auto eta = material->get_eta();
-        auto normal_dot_ray = glm::dot(i.geometry_ONB.W, ray.D);
+        float fresnel = 1.f;
+        float eta = material->get_eta();
+        float normal_dot_ray = glm::dot(i.geometry_ONB.W, ray.D);
         if (eta > 0.f)
         {
           fresnel = Util::fresnel_schlick(normal_dot_ray, eta, 1.f);
@@ -54,7 +54,7 @@ namespace Raytracer
         // Sample reflectance function (N = g_drt_samples_reflection)
         for (auto samples = reflection_samples_; samples > 0; --samples)
         {
-          auto xi = sampler.next_uniform_real(2);
+          std::vector<float> xi = sampler.next_uniform_real(2);
           // Get a new direction from reflectance function R
           brdf = material->sample_specular(xi, i.geometry_ONB.W, wo, wi, pdf);
           // numerical stability check + prune redundant bounces

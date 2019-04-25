@@ -7,7 +7,6 @@ namespace Raytracer
 {
   struct Sample
   {
-    float weight;
     glm::vec2 jitter;
   };
 
@@ -29,6 +28,7 @@ namespace Raytracer
     const unsigned int spp;
     Sampler(const unsigned int spp);
     ~Sampler();
+    float get_weight() const { return 1.f / spp; }
     Sample next_stratified_sample();    
     Sample next_uniform_sample();
     std::vector<float> next_uniform_real(const unsigned int count);

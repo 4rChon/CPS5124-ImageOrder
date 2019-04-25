@@ -11,11 +11,11 @@ namespace Raytracer
     spp_root_ = (float)sqrt(spp);
     for (auto i = 0; i < spp_root_; i++)
     {
-      auto min_jitter = (double)(i / spp_root_);
-      auto max_jitter = (double)(i / spp_root_) + spp_root_ / spp;
+      float min_jitter = (i / spp_root_);
+      float max_jitter = (i / spp_root_) + spp_root_ / spp;
       std::uniform_real_distribution<> dist = std::uniform_real_distribution<>(
-        std::min(min_jitter, max_jitter), 
-        std::max(min_jitter, max_jitter)
+        (double)std::min(min_jitter, max_jitter), 
+        (double)std::max(min_jitter, max_jitter)
       );
       stratified_dist_.push_back(dist);
     }
@@ -25,7 +25,6 @@ namespace Raytracer
   Sample Sampler::next_stratified_sample()
   {
     Sample sample;
-    sample.weight = 1.f / spp;
     sample.jitter = glm::vec2(
       stratified_dist_[sample_x_ % (int)spp_root_](gen_), 
       stratified_dist_[sample_y_ % (int)spp_root_](gen_)
@@ -42,7 +41,6 @@ namespace Raytracer
   Sample Sampler::next_uniform_sample()
   {
     Sample sample;
-    sample.weight = 1.f / spp;
     sample.jitter = glm::vec2(uniform_dist_real_(gen_), uniform_dist_real_(gen_));
     return sample;
   }
